@@ -2,8 +2,10 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import Main from "./pages/main";
 import Login from "./pages/login";
-import User from "./pages/users";
-import CadastrarUsuario from "./pages/cadastro";
+import RegisterSucess from "./pages/registerSucess";
+import RegisterUser from "./pages/register";
+import Search from "./pages/search";
+import MyList from "./pages/myList";
 import { Ionicons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -16,81 +18,45 @@ export default function Routes() {
         name="Login"
         component={Login}
         options={{
-          title: "LOGIN",
-          headerLeft: null,
-          headerTitleAlign: "center",
-          headerStyle: {
-            backgroundColor: "#7159c1",
-          },
-          headerTitleStyle: {
-            color: "#fff",
-            fontWeight: "bold",
-          },
+          headerShown: false
         }}
       />
       <Stack.Screen
-        name="CadastrarUsuario"
-        component={CadastrarUsuario}
+        name="RegisterUser"
+        component={RegisterUser}
         options={{
-          title: "CADASTRO DE USUÁRIOS",
-          headerTitleAlign: "center",
-          headerStyle: {
-            backgroundColor: "#7159c1",
-          },
-          headerTitleStyle: {
-            color: "#fff",
-            fontWeight: "bold",
-          },
+          headerShown: false
+        }}
+      />
+      <Stack.Screen
+        name="RegisterSucess"
+        component={RegisterSucess}
+        options={{
+          headerShown: false
         }}
       />
       <Stack.Screen
         name="Main"
         component={Main}
-        options={({ navigation }) => ({
-          headerLeft: null,
-          title: "GitHub VIEWER",
-          headerTitleAlign: "center",
-          headerStyle: {
-            backgroundColor: "#3498db",
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-          headerRight: () => (
-            <Ionicons
-              name="log-out-outline"
-              size={24}
-              color="#fff"
-              style={{ marginRight: 15 }}
-              onPress={async () => {
-                try {
-                  await AsyncStorage.removeItem("userToken");
-                  navigation.replace("Login");
-                } catch (error) {
-                  console.error("Erro ao realizar o logout:", error);
-                }
-              }}
-            />
-          ),
-        })}
-      />
-
-      <Stack.Screen
-        name="User"
-        component={User}
         options={{
-          title: "PERFIL DO USUÁRIO",
-          headerTitleAlign: "center",
-          headerStyle: {
-            backgroundColor: "#7159c1",
-          },
-          headerTitleStyle: {
-            color: "#fff",
-            fontWeight: "bold",
-          },
+          headerShown: false
         }}
       />
+      <Stack.Screen
+        name="Search"
+        component={Search}
+        options={{
+          headerShown: false
+        }}
+      />
+      <Stack.Screen
+        name="MyList"
+        component={MyList}
+        options={{
+          headerShown: false
+        }}
+      />
+
     </Stack.Navigator>
   );
 }

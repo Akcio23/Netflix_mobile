@@ -1,124 +1,118 @@
-import React, { Component } from "react";
-import { Keyboard, ActivityIndicator } from "react-native";
-import Icon from "@expo/vector-icons/MaterialIcons";
-import api from "../services/api";
+import React, { useState, useEffect } from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {
-  Container,
-  Form,
-  Input,
-  SubmitButton,
-  List,
-  User,
-  Avatar,
-  Name,
-  Bio,
-  ProfileButton,
-  ProfileButtonText,
-} from "../styles";
-export default class Main extends Component {
-  state = {
-    newUser: "",
-    users: [],
-    loading: false,
-  };
+import { MaterialIcons } from '@expo/vector-icons';
 
-  async componentDidMount() {
-    const users = await AsyncStorage.getItem("users");
-    if (users) {
-      this.setState({ users: JSON.parse(users) });
-    }
+const Main = () => {
+  const navigation = useNavigation();
+  const [user, setUser] = useState(null);
+
+  const handleHome = () => {
+    navigation.navigate("Login")
   }
 
-  componentDidUpdate(_, prevState) {
-    const { users } = this.state;
-    if (prevState.users !== users) {
-      AsyncStorage.setItem("users", JSON.stringify(users));
-    }
+  const handleSearch = () => {
+    navigation.navigate("Search")
   }
 
-  handleAddUser = async () => {
-    try {
-      const { users, newUser } = this.state;
-      this.setState({ loading: true });
-      const response = await api.get(`/users/${newUser}`);
-      if (users.find((user) => user.login === response.data.login)) {
-        alert("Usuário já adicionado!");
-        this.setState({ loading: false });
-        return;
+  const handleMyList = () => {
+    navigation.navigate("MyList")
+  }
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const storedUser = await AsyncStorage.getItem("user");
+
+      if (storedUser) {
+        const parsedUser = JSON.parse(storedUser)
+        setUser(parsedUser);
       }
-      const data = {
-        name: response.data.name,
-        login: response.data.login,
-        bio: response.data.bio,
-        avatar: response.data.avatar_url,
-      };
-      console.log(data);
 
-      this.setState({
-        users: [...users, data],
-        newUser: "",
-        loading: false,
-      });
-      Keyboard.dismiss();
-    } catch (error) {
-      alert("Usuário não encontrado!");
-      this.setState({ loading: false });
-    }
-  };
+    };
 
-  render() {
-    const { users, newUser, loading } = this.state;
-    return (
-      <Container>
-        <Form>
-          <Input
-            autoCorrect={false}
-            autoCapitalize="none"
-            placeholder="Adicionar usuário"
-            value={newUser}
-            onChangeText={(text) => this.setState({ newUser: text })}
-            returnKeyType="send"
-            onSubmitEditing={this.handleAddUser}
-          />
-          <SubmitButton loading={loading} onPress={this.handleAddUser}>
-            {loading ? (
-              <ActivityIndicator color="#fff" />
-            ) : (
-              <Icon name="add" size={20} color="#fff" />
-            )}
-          </SubmitButton>
-        </Form>
-        <List
-          showsVerticalScrollIndicator={false}
-          data={users}
-          keyExtractor={(user) => user.login}
-          renderItem={({ item }) => (
-            <User>
-              <Avatar source={{ uri: item.avatar }} />
-              <Name>{item.name}</Name>
-              <Bio>{item.bio}</Bio>
-              <ProfileButton
-                onPress={() => {
-                  this.props.navigation.navigate("User", { user: item });
-                }}
-              >
-                <ProfileButtonText>Ver perfil</ProfileButtonText>
-              </ProfileButton>
-              <ProfileButton
-              onPress={() => {
-                this.setState({
-                  users: this.state.users.filter((user) => user.login !== item.login)
-                })
-              }}
-              style={{backgroundColor: "red"}}
-              >
-                <ProfileButtonText>Remover</ProfileButtonText>
-              </ProfileButton>
-            </User>
-          )}
-        />
-      </Container>
-    );
+    fetchUser();
+  }, []);
+
+  return (
+    <View style={styles.body}>
+
+      {user && <Text style={styles.text}>Bem vindo {user.user}</Text>}
+
+      <View style={styles.options}>
+
+        <TouchableOpacity onPress={handleSearch}>
+          <MaterialIcons name="search" size={150} color="#fff" style={styles.buttons} />
+          <Text style={styles.textBox}>Pesquisar Filmes</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={handleMyList}>
+          <MaterialIcons name="checklist" size={150} color="#fff" style={styles.buttonsT} />
+          <Text style={styles.textBox}>Minha Lista</Text>
+
+        </TouchableOpacity>
+
+      </View>
+      <TouchableOpacity style={styles.buttonEntrar} onPress={handleHome} >
+        <Text style={styles.button}>Sair</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  body: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#000000",
+    gap: 40,
+    paddingLeft: "30",
+    paddingRight: "30",
+  },
+  text: {
+    color: "#FFFFFF",
+    fontSize: 40,
+    textAlign: "left"
+  },
+  options: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 30
+  },
+  buttons: {
+    backgroundColor: "#479ced",
+    borderRadius: 25,
+    height: 150
+  },
+  buttonsT: {
+    backgroundColor: "#ff8300",
+    borderRadius: 25,
+    height: 150
+  },
+  textBox: {
+    color: "#fff",
+    fontSize: 20,
+    marginTop: 10,
+    textAlign: "center"
+  },
+  buttonEntrar: {
+    backgroundColor: "#e50914",
+    borderRadius: 5,
+    padding: 15,
+    width: "100%",
+    alignItems: "center",
+    marginVertical: 5,
+  },
+  button: {
+    fontSize: 20,
+    color: "#fff"
+  },
+  textCenter: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: "center"
   }
-}
+});
+
+export default Main;
