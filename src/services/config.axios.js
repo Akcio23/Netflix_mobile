@@ -1,11 +1,8 @@
 
 import axios from 'axios'
-import dotenv from 'dotenv'
-
-dotenv.config({ path: '.env' })
 
 const auth = axios.create({
-  baseURL: `http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&`,
+  baseURL: `http://www.omdbapi.com/?apikey=92034ab2&`,
   timeout: 1000,
   headers: { 'X-Custom-Header': 'foobar' },
 })
