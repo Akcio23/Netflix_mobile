@@ -6,6 +6,7 @@ import RegisterSucess from "./pages/registerSucess";
 import RegisterUser from "./pages/register";
 import Search from "./pages/search";
 import MyList from "./pages/myList";
+import Details from "./pages/Details";
 import { Ionicons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -52,6 +53,13 @@ export default function Routes() {
       <Stack.Screen
         name="MyList"
         component={MyList}
+        options={{
+          headerShown: false
+        }}
+      />
+      <Stack.Screen
+        name="Details"
+        component={Details}
         options={{
           headerShown: false
         }}
