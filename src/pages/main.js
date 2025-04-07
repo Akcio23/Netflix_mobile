@@ -28,9 +28,7 @@ const Main = () => {
         const parsedUser = JSON.parse(storedUser)
         setUser(parsedUser);
       }
-
     };
-
     fetchUser();
   }, []);
 
