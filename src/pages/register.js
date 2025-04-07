@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { ScrollView } from "react-native";
 import {
   View,
   TextInput,
@@ -47,7 +48,7 @@ export default class RegisterUser extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Image
             source={require('../../assets/image.png')}
             style={{ width: 166.15, height: 45 }} />
@@ -115,7 +116,7 @@ export default class RegisterUser extends Component {
         </TouchableOpacity>
 
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
