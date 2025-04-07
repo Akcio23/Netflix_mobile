@@ -8,12 +8,10 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const Search = () => {
   const navigation = useNavigation();
 
-  const [data, setData] = useState('')
   const [value, setValue] = useState('')
 
 
   const searchInfo = async (value) =>{
-
     try {
       const response = await auth.get('',{
         params:{
@@ -26,9 +24,7 @@ const Search = () => {
         return 
       }
 
-      setData(response.data)
-
-      await savedInfo(data)
+      await savedInfo(response.data)
 
       Alert.alert("Filme adicionado a lista", response.data.Title)
 
@@ -39,6 +35,11 @@ const Search = () => {
 
   const savedInfo = async (data) => {
     try {
+      if (!data || typeof data !== 'object' || !data.Title) {
+        Alert.alert('Erro tente novamente!');
+        return;
+      }
+
       const user = await AsyncStorage.getItem("user");
       const userObj = user ? JSON.parse(user) : {};
   
@@ -47,7 +48,7 @@ const Search = () => {
         movies: [...(userObj.movies || []), data]
       };
   
-      await AsyncStorage.setItem("user", JSON.stringify(updatedUser)); /// Verificar pq na primeira vez não adiciona o Filme
+      await AsyncStorage.setItem("user", JSON.stringify(updatedUser));
       
 
     } catch (error) {
