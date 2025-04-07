@@ -1,5 +1,6 @@
 import React from "react";
 import { useRoute, useNavigation } from "@react-navigation/native";
+import { ScrollView } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   StyleSheet,
@@ -45,7 +46,9 @@ const Details = () => {
 
 
   return (
-    <View style={styles.body}>
+    
+  
+    <ScrollView style={styles.body}>
       <Text style={styles.textPrimary}>Sobre o filme</Text>
 
       <View style={{ alignItems: 'center', marginTop: 50, marginBottom: 20 }}>
@@ -76,7 +79,8 @@ const Details = () => {
       <TouchableOpacity style={styles.buttonBack} onPress={handleMylist}>
         <Text style={styles.button}>Voltar</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
+    
   );
 };
 
@@ -84,10 +88,10 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
     backgroundColor: "#000000",
-    paddingTop: "100",
-    paddingLeft: "30",
-    paddingRight: "30",
-    paddingBottom: "100",
+    paddingTop: 100,
+    paddingLeft: 30,
+    paddingRight: 30,
+    paddingBottom: 100,
   },
   content: {
     flex: 1,
@@ -125,6 +129,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginVertical: 5,
   },
+  scrollContainer: {
+    paddingBottom: 100,
+  },
+  
 });
 
 export default Details;

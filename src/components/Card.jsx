@@ -22,7 +22,7 @@ const Card = ({ movie }) => {
       <Text style={styles.cardText}>Ano: {movie.Year}</Text>
 
     <TouchableOpacity style={styles.buttonDetails} onPress={handleDetails}>
-      <Text style={styles.textButton}>Detalhes</Text>
+      <Text style={styles.textButton} numberOfLines={1} ellipsizeMode="tail">Detalhes</Text>
     </TouchableOpacity>
     </TouchableOpacity>
     
@@ -42,14 +42,16 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   buttonDetails: {
+    maxWidth: 200,
     backgroundColor:"#fff",
     padding: 10,
-    paddingHorizontal:35,
+    paddingHorizontal:0,
     borderRadius: 5,
     margin: 10
   },
   textButton: {
-    color: "#b31515"
+    color: "#b31515",
+    paddingHorizontal: 30
   }
 });
 

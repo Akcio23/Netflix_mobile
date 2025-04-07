@@ -36,22 +36,28 @@ const MyList = () => {
             style={{ width: 172, height: 172 }}
           />
           <Text style={styles.textSecond}>Sem filmes assistidos</Text>
+
+          <TouchableOpacity style={styles.buttonBack} onPress={handlerMain}>
+          <Text style={styles.button}>Voltar</Text>
+        </TouchableOpacity>
         </View>
       ) : (
         <ScrollView contentContainerStyle={styles.scrollContainer}>
-          <View style={styles.cardsContainer}>
-            {user.movies.map((movie, index) => (
-              <View style={styles.cardWrapper} key={index}>
-                <Card movie={movie} />
-              </View>
-            ))}
-          </View>
-        </ScrollView>
+        <View style={styles.cardsContainer}>
+          {user.movies.map((movie, index) => (
+            <View style={styles.cardWrapper} key={index}>
+              <Card movie={movie} />
+            </View>
+          ))}
+        </View>
+      
+        <TouchableOpacity style={styles.buttonBack} onPress={handlerMain}>
+          <Text style={styles.button}>Voltar</Text>
+        </TouchableOpacity>
+      </ScrollView>
       )}
 
-      <TouchableOpacity style={styles.buttonBack} onPress={handlerMain}>
-        <Text style={styles.button}>Voltar</Text>
-      </TouchableOpacity>
+      
     </View>
   );
 };
