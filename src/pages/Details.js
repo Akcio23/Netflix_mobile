@@ -16,7 +16,6 @@ const Details = () => {
   const { movie } = route.params;
   const navigation = useNavigation();
 
-
   const handleMylist = () => {
     navigation.navigate("MyList")
   }
@@ -31,6 +30,7 @@ const Details = () => {
         const updatedMovies = parsedUser.movies.filter(
           (m) => m.imdbID !== movie.imdbID
         );
+
         const updatedUser = { ...parsedUser, movies: updatedMovies };
 
         await AsyncStorage.setItem("user", JSON.stringify(updatedUser));
@@ -42,12 +42,7 @@ const Details = () => {
       console.error("Erro ao remover o filme:", error);
     }
   };
-
-
-
   return (
-    
-  
     <ScrollView style={styles.body}>
       <Text style={styles.textPrimary}>Sobre o filme</Text>
 
@@ -95,7 +90,8 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    marginLeft: 50
+    marginLeft: 50,
+    marginBottom: 30,
   },
   textPrimary: {
     color: "#fff",

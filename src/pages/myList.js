@@ -56,8 +56,6 @@ const MyList = () => {
         </TouchableOpacity>
       </ScrollView>
       )}
-
-      
     </View>
   );
 };
@@ -66,10 +64,10 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
     backgroundColor: "#000000",
-    paddingTop: "100",
-    paddingLeft: "30",
-    paddingRight: "30",
-    paddingBottom: "100",
+    paddingTop: 100,
+    paddingLeft: 30,
+    paddingRight: 30,
+    paddingBottom: 100,
   },
   textPrimary: {
     color: "#fff",

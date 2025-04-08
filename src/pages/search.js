@@ -10,7 +10,6 @@ const Search = () => {
 
   const [value, setValue] = useState('')
 
-
   const searchInfo = async (value) =>{
     try {
       const response = await auth.get('',{

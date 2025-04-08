@@ -53,7 +53,7 @@ export default class RegisterUser extends Component {
             source={require('../../assets/image.png')}
             style={{ width: 166.15, height: 45 }} />
 
-          <Text style={styles.text}>Cadastre-se</Text>
+        <Text style={styles.text}>Cadastre-se</Text>
         <View style={styles.body}>
         <TextInput
           style={styles.input}
@@ -120,7 +120,6 @@ export default class RegisterUser extends Component {
     );
   }
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

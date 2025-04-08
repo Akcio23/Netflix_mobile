@@ -7,8 +7,6 @@ import RegisterUser from "./pages/register";
 import Search from "./pages/search";
 import MyList from "./pages/myList";
 import Details from "./pages/Details";
-import { Ionicons } from "@expo/vector-icons";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Stack = createStackNavigator();
 

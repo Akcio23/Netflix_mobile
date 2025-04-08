@@ -34,7 +34,6 @@ const Main = () => {
 
   return (
     <View style={styles.body}>
-
       {user && <Text style={styles.text}>Bem vindo {user.user}</Text>}
 
       <View style={styles.options}>
@@ -65,8 +64,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#000000",
     gap: 40,
-    paddingLeft: "30",
-    paddingRight: "30",
+    paddingLeft: 30,
+    paddingRight: 30,
   },
   text: {
     color: "#FFFFFF",

@@ -46,9 +46,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#000000",
   },
   containerTop: {
-    paddingTop: "85",
-    paddingLeft: "30",
-    paddingRight: "30",
+    paddingTop: 85,
+    paddingLeft: 30,
+    paddingRight: 30,
     flex: 1,
   },
   body: {

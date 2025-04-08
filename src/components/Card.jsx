@@ -5,15 +5,12 @@ import { useNavigation } from "@react-navigation/native";
 const Card = ({ movie }) => {
   if (!movie || typeof movie !== 'object' || !movie.Title) return null;
   const navigation = useNavigation();
-
   const handleDetails = () => {
     navigation.navigate("Details",{ movie })
   }
   
   return (
-    
     <TouchableOpacity onPress={handleDetails} style={styles.card}  >
-
       <Image
         source={{ uri: movie.Poster }}
         style={{ width: 150, height: 200, borderRadius: 8, marginBottom: 10}}
@@ -25,10 +22,8 @@ const Card = ({ movie }) => {
       <Text style={styles.textButton} numberOfLines={1} ellipsizeMode="tail">Detalhes</Text>
     </TouchableOpacity>
     </TouchableOpacity>
-    
   );
 };
-
 const styles = StyleSheet.create({
   card: {
     padding: 10,

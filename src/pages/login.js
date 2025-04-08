@@ -40,15 +40,12 @@ const Login = () => {
 
   return (
     <View style={styles.container}>
-
       <View style={styles.containerTop}>
-
         <View>
           <Image
             source={require('../../assets/image.png')}
             style={{ width: 166.15, height: 45 }} />
         </View>
-
 
         <Text style={styles.text}>Entrar</Text>
         <View style={styles.body}>
@@ -102,9 +99,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#000000",
   },
   containerTop: {
-    paddingTop: "85",
-    paddingLeft: "30",
-    paddingRight: "30",
+    paddingTop: 85,
+    paddingLeft: 30,
+    paddingRight: 30,
     flex: 1,
     gap: 50
   },
