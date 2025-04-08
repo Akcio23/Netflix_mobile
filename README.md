@@ -33,7 +33,7 @@ Projeto feito para a introdução em react-native
 ```
 **Rodando o Projeto**
 ```javascript
-  npm expo start # ou yarm expo start
+  npx expo start # ou yarm expo start
 ```
   Agora, escaneie o QR Code com o aplicativo Expo Go no seu celular.
 
