@@ -1,6 +1,6 @@
 # Lista de Filmes 📽️
 
-Projeto feito para a introdução em react native 
+Projeto feito para a introdução em react-native 
 
 ## 🚀 Tecnologias e Ferramentas Utilizadas
 - **Axios 1.8.4**  
@@ -33,13 +33,13 @@ Projeto feito para a introdução em react native
 ```
 **Rodando o Projeto**
 ```javascript
-  npm expo start //ou yarm expo start
+  npm expo start # ou yarm expo start
 ```
-  Agora excaneie o QR code em seu aplicativo expo.go em seu celular
+  Agora, escaneie o QR Code com o aplicativo Expo Go no seu celular.
 
   ---
 
-#### Desenvolvido por: ####
+#### 👨‍💻 Desenvolvido por: ####
 ```
 Pedro Afonso Acacio da Silva
 ```
