@@ -42,6 +42,7 @@ Projeto feito para a introdução em react-native
 #### 👨‍💻 Desenvolvido por: ####
 ```
 Pedro Afonso Acacio da Silva
+Arthur Rodrigues Ferreira
 ```
 
 
